@@ -8,7 +8,7 @@ public interface StudentGroupDao {
 	
 	List<StudentGroup> getGroups();
 	
-	StudentGroup getGroup(Integer id);
-	StudentGroup saveGroup(StudentGroup group);
+	StudentGroup getStudentGroup(Integer id);
+	StudentGroup saveStudentGroup(StudentGroup studentGroup);
 
 }

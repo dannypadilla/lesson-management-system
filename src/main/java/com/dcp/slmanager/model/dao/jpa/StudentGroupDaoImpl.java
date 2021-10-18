@@ -7,12 +7,14 @@ import javax.persistence.PersistenceContext;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.dcp.slmanager.model.Student;
 import com.dcp.slmanager.model.StudentGroup;
 import com.dcp.slmanager.model.dao.StudentGroupDao;
 
+@Repository
 public class StudentGroupDaoImpl implements StudentGroupDao {
 	
 	private static Logger logger = LoggerFactory.getLogger(StudentGroupDaoImpl.class);
@@ -43,7 +45,7 @@ public class StudentGroupDaoImpl implements StudentGroupDao {
 
 	
 	@Override
-	public StudentGroup getGroup(Integer id) {
+	public StudentGroup getStudentGroup(Integer id) {
 		
 		logger.trace("GET (Student)Group");
 		String msg = "StudentGroups List is Empty";
@@ -61,7 +63,7 @@ public class StudentGroupDaoImpl implements StudentGroupDao {
 
 	@Override
 	@Transactional
-	public StudentGroup saveGroup(StudentGroup group) {
+	public StudentGroup saveStudentGroup(StudentGroup group) {
 		return this.entityManager.merge(group);
 	}
 
