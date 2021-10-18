@@ -12,6 +12,8 @@ public class StudentGroupDto {
 	private Integer studentGroupId;
 	private String groupName;
 	
+	public StudentGroupDto() {}
+	
 	public StudentGroupDto(StudentGroup studentGroup) {
 		logger.trace("Called StudentGroupDto Constructor");
 		
