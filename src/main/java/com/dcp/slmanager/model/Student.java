@@ -10,8 +10,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 
 @Entity
@@ -26,12 +26,9 @@ public class Student implements Serializable {
 	@GeneratedValue
 	private Integer studentId;
 	private String name;
-	/*
-	private Integer birthYear;
-	private String parentsName;
-	private String parentsEmail;
-	*/
 	
+	@ManyToOne
+	@JoinColumn(name = "student_group_id")
 	private StudentGroup studentGroup;
 	
 	// the function name determines the name in JSON output
@@ -52,7 +49,7 @@ public class Student implements Serializable {
 	
 	public void setStudentId(Integer studentId) {this.studentId = studentId;}
 	public void setName(String name) {this.name = name;}
-	public void setGroup(StudentGroup studentGroup) {
+	public void setStudentGroup(StudentGroup studentGroup) {
 		logger.trace("Called SET StudentGroup");
 		String msg = "StudentGroup is Empty";
 		if (this.studentGroup != null) {
