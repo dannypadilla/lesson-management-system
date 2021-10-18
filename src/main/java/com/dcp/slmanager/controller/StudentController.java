@@ -20,16 +20,15 @@ import org.springframework.web.server.ResponseStatusException;
 import com.dcp.slmanager.model.Student;
 import com.dcp.slmanager.model.StudentDto;
 import com.dcp.slmanager.model.StudentGroup;
-import com.dcp.slmanager.model.StudentGroupDto;
 import com.dcp.slmanager.model.dao.StudentDao;
 import com.dcp.slmanager.model.dao.StudentGroupDao;
 
 
 @RestController
-@RequestMapping("/api")
-public class LessonManagementController {
+@RequestMapping("/students")
+public class StudentController {
 	
-	private static Logger logger = LoggerFactory.getLogger(LessonManagementController.class);
+	private static Logger logger = LoggerFactory.getLogger(StudentController.class);
 	
 	
 	@Autowired
@@ -37,12 +36,12 @@ public class LessonManagementController {
 	@Autowired
 	private StudentGroupDao studentGroupDao;
 	
-	public LessonManagementController() {
-		logger.trace("Hi from Controller");
+	public StudentController() {
+		logger.trace("Hi from Student Controller");
 	}
 	
 	
-	@GetMapping("/students")
+	@GetMapping
 	public List<StudentDto> list() {
 		List<Student> students = studentDao.getStudents();
 		List<StudentDto> dto = new ArrayList<StudentDto>();
@@ -54,8 +53,8 @@ public class LessonManagementController {
 	}
 	
 	
-	@GetMapping("/student/{id}")
-	public StudentDto getStudent( @PathVariable Integer id) {
+	@GetMapping("/{id}")
+	public StudentDto get( @PathVariable Integer id) {
 		Student student = studentDao.getStudent(id);
 		
 		return new StudentDto(student);
@@ -94,24 +93,4 @@ public class LessonManagementController {
         return new StudentDto(student);
     }	
 	
-	
-	@GetMapping("/groups")
-	public List<StudentGroupDto> groupList() {
-		List<StudentGroup> studentGroups = studentGroupDao.getGroups();
-		List<StudentGroupDto> groupDto = new ArrayList<StudentGroupDto>();
-		
-		for (StudentGroup studentGroup : studentGroups) {
-			groupDto.add(new StudentGroupDto(studentGroup) );
-		}
-		return groupDto;
-	}
-	
-	
-	@GetMapping("/group/{id}")
-	public StudentGroupDto getGroup( @PathVariable Integer id) {
-		StudentGroup studentGroup = studentGroupDao.getStudentGroup(id);
-		
-		return new StudentGroupDto(studentGroup);
-	}
-
 }
