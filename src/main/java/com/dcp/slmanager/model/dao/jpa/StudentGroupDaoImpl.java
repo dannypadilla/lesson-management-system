@@ -20,6 +20,10 @@ public class StudentGroupDaoImpl implements StudentGroupDao {
 	@PersistenceContext
 	private EntityManager entityManager;
 	
+	StudentGroupDaoImpl() {
+		logger.trace("Hi from StudentGROUPDaoImpl Constructor");
+	}
+	
 
 	@Override
 	public List<StudentGroup> getGroups() {
@@ -27,7 +31,7 @@ public class StudentGroupDaoImpl implements StudentGroupDao {
 		String msg = "StudentGroups List is Empty";
 		
 		List<StudentGroup> studentGroupList = this.entityManager.createQuery(
-				"from Group", StudentGroup.class)
+				"from StudentGroup", StudentGroup.class)
 				.getResultList();
 		
 		if ( !studentGroupList.isEmpty() ) {
