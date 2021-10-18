@@ -56,7 +56,7 @@ public class Student implements Serializable {
 	
 	public void setStudentId(Integer studentId) {this.studentId = studentId;}
 	public void setName(String name) {this.name = name;}
-	public void setParentName(String parentName) {this.name = parentName;}
+	public void setParentName(String parentName) {this.parentName = parentName;}
 	public void setParentEmail(String parentEmail) {this.parentEmail = parentEmail;}
 	public void setStudentGroup(StudentGroup studentGroup) {
 		logger.trace("Called SET StudentGroup");
