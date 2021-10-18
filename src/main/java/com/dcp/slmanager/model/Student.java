@@ -2,6 +2,7 @@ package com.dcp.slmanager.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Table;
@@ -26,6 +27,10 @@ public class Student implements Serializable {
 	@GeneratedValue
 	private Integer studentId;
 	private String name;
+	@Column(name = "parents_name")
+	private String parentName;
+	@Column(name = "parents_email")
+	private String parentEmail;
 	
 	@ManyToOne
 	@JoinColumn(name = "student_group_id")
@@ -36,6 +41,8 @@ public class Student implements Serializable {
 	// {"studentId: 1", ...} V.S. {..., "studentId": 1}
 	public Integer getStudentId() { return this.studentId; }
 	public String getName() { return this.name; }
+	public String getParentName() { return this.parentName; }
+	public String getParentEmail() { return this.parentEmail; }
 	
 	public StudentGroup getStudentGroup() {
 		logger.trace("Called GET StudentGroup");
@@ -49,6 +56,8 @@ public class Student implements Serializable {
 	
 	public void setStudentId(Integer studentId) {this.studentId = studentId;}
 	public void setName(String name) {this.name = name;}
+	public void setParentName(String parentName) {this.name = parentName;}
+	public void setParentEmail(String parentEmail) {this.parentEmail = parentEmail;}
 	public void setStudentGroup(StudentGroup studentGroup) {
 		logger.trace("Called SET StudentGroup");
 		String msg = "StudentGroup is Empty";

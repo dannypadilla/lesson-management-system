@@ -7,6 +7,8 @@ public class StudentDto {
 	
 	private Integer id;
 	private String name;
+	private String parentName;
+	private String parentEmail;
 	private Integer groupId;
 	private String groupName;
 	
@@ -20,6 +22,8 @@ public class StudentDto {
 		String msg = "StudentGroup is Empty";
 		this.id = student.getStudentId();
 		this.name = student.getName();
+		this.parentName = student.getParentName();
+		this.parentEmail = student.getParentEmail();
 		if (student.getStudentGroup() != null) {
 			this.groupId = student.getStudentGroup().getStudentGroupId();
 			this.groupName = student.getStudentGroup().getName();
@@ -58,6 +62,22 @@ public class StudentDto {
 
 	public void setGroupName(String groupName) {
 		this.groupName = groupName;
+	}
+
+	public String getParentName() {
+		return parentName;
+	}
+
+	public void setParentName(String parentName) {
+		this.parentName = parentName;
+	}
+
+	public String getParentEmail() {
+		return parentEmail;
+	}
+
+	public void setParentEmail(String parentEmail) {
+		this.parentEmail = parentEmail;
 	}
 	
 	
