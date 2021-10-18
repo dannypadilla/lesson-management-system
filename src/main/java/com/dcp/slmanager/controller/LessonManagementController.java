@@ -63,5 +63,13 @@ public class LessonManagementController {
 		}
 		return groupDto;
 	}
+	
+	
+	@GetMapping("/group/{id}")
+	public StudentGroupDto getGroup( @PathVariable Integer id) {
+		StudentGroup studentGroup = studentGroupDao.getStudentGroup(id);
+		
+		return new StudentGroupDto(studentGroup);
+	}
 
 }
