@@ -43,30 +43,12 @@ public class Student implements Serializable {
 	public String getName() { return this.name; }
 	public String getParentName() { return this.parentName; }
 	public String getParentEmail() { return this.parentEmail; }
-	
-	public StudentGroup getStudentGroup() {
-		logger.trace("Called GET StudentGroup");
-		String msg = "StudentGroup is Empty";
-		if (this.studentGroup != null) {
-			msg = this.studentGroup.getName();
-		}
-		logger.info(msg);
-		return this.studentGroup;
-	}
+	public StudentGroup getStudentGroup() { return this.studentGroup; }
 	
 	public void setStudentId(Integer studentId) {this.studentId = studentId;}
 	public void setName(String name) {this.name = name;}
 	public void setParentName(String parentName) {this.parentName = parentName;}
 	public void setParentEmail(String parentEmail) {this.parentEmail = parentEmail;}
-	public void setStudentGroup(StudentGroup studentGroup) {
-		logger.trace("Called SET StudentGroup");
-		String msg = "StudentGroup is Empty";
-		if (this.studentGroup != null) {
-			msg = this.studentGroup.getName();
-		}
-		logger.info(msg);
-		this.studentGroup = studentGroup;
-	}
-	
+	public void setStudentGroup(StudentGroup studentGroup) { this.studentGroup = studentGroup; }
 	
 }

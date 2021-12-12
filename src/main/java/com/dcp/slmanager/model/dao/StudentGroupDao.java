@@ -10,5 +10,6 @@ public interface StudentGroupDao {
 	
 	StudentGroup getStudentGroup(Integer id);
 	StudentGroup saveStudentGroup(StudentGroup studentGroup);
+	//List<Student> getStudents();
 
 }

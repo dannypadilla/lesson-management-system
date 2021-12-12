@@ -10,7 +10,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.dcp.slmanager.model.Student;
 import com.dcp.slmanager.model.StudentGroup;
 import com.dcp.slmanager.model.dao.StudentGroupDao;
 
@@ -29,34 +28,16 @@ public class StudentGroupDaoImpl implements StudentGroupDao {
 
 	@Override
 	public List<StudentGroup> getGroups() {
-		logger.trace("getStudentGroups List");
-		String msg = "StudentGroups List is Empty";
-		
 		List<StudentGroup> studentGroupList = this.entityManager.createQuery(
 				"from StudentGroup", StudentGroup.class)
 				.getResultList();
-		
-		if ( !studentGroupList.isEmpty() ) {
-			msg = "StudentGroupDaoImpl has data!";
-		}
-		logger.info(msg);
 		return studentGroupList;
 	}
 
 	
 	@Override
 	public StudentGroup getStudentGroup(Integer id) {
-		
-		logger.trace("GET (Student)Group");
-		String msg = "StudentGroups List is Empty";
-		
 		StudentGroup studentGroup = this.entityManager.find(StudentGroup.class, id);
-		
-		if ( studentGroup != null ) {
-			msg = "StudentGroupDaoImpl has data! \nName: " + studentGroup.getName();
-		}
-		logger.info(msg);
-		
 		return studentGroup;
 	}
 	
@@ -66,5 +47,15 @@ public class StudentGroupDaoImpl implements StudentGroupDao {
 	public StudentGroup saveStudentGroup(StudentGroup group) {
 		return this.entityManager.merge(group);
 	}
+
+	/*
+	@Override
+	public List<Student> getStudents() {
+		List<Student> studentList = this.entityManager.createQuery(
+				"from Student", Student.class)
+				.getResultList();
+		return studentList;
+	}
+	*/
 
 }
