@@ -1,7 +1,7 @@
 package com.dcp.slmanager.model;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,14 +21,14 @@ public class StudentGroup implements Serializable {
 	private String name;
 	
 	@OneToMany(mappedBy = "studentGroup")
-	private Set<Student> studentList;
+	private List<Student> studentList;
 
 	public Integer getStudentGroupId() { return this.studentGroupId; }
 	public String getName() { return this.name; }
-	public Set<Student> getStudentList() { return this.studentList; }
+	public List<Student> getStudentList() { return this.studentList; }
 	
 	public void setStudentGroupId(Integer studentGroupId) { this.studentGroupId = studentGroupId; }
 	public void setName(String name) { this.name = name; }
-	public void setStudentList(Set<Student> studentList) {this.studentList = studentList; }
+	public void setStudentList(List<Student> studentList) { this.studentList = studentList; }
 	
 }
