@@ -26,7 +26,10 @@ public class Student implements Serializable {
 	@Id
 	@GeneratedValue
 	private Integer studentId;
+	@Column(name = "name")
 	private String name;
+	@Column(name = "birth_year")
+	private Integer birthYear;
 	@Column(name = "parents_name")
 	private String parentName;
 	@Column(name = "parents_email")
@@ -41,12 +44,14 @@ public class Student implements Serializable {
 	// {"studentId: 1", ...} V.S. {..., "studentId": 1}
 	public Integer getStudentId() { return this.studentId; }
 	public String getName() { return this.name; }
+	public Integer getBirthYear() { return this.birthYear; }
 	public String getParentName() { return this.parentName; }
 	public String getParentEmail() { return this.parentEmail; }
 	public StudentGroup getStudentGroup() { return this.studentGroup; }
 	
 	public void setStudentId(Integer studentId) {this.studentId = studentId;}
 	public void setName(String name) {this.name = name;}
+	public void setBirthYear(Integer birthYear) { this.birthYear = birthYear; }
 	public void setParentName(String parentName) {this.parentName = parentName;}
 	public void setParentEmail(String parentEmail) {this.parentEmail = parentEmail;}
 	public void setStudentGroup(StudentGroup studentGroup) { this.studentGroup = studentGroup; }
