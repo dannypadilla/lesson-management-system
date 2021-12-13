@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,7 +24,7 @@ import com.dcp.slmanager.model.StudentGroup;
 import com.dcp.slmanager.model.dao.StudentDao;
 import com.dcp.slmanager.model.dao.StudentGroupDao;
 
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/students")
 public class StudentController {
@@ -68,6 +69,10 @@ public class StudentController {
         	throw new ResponseStatusException(
         			HttpStatus.BAD_REQUEST, "Student name is required");
         }
+        if ( !StringUtils.hasText( studentDto.getBirthYear().toString() ) ) {
+        	throw new ResponseStatusException(
+        			HttpStatus.BAD_REQUEST, "Birth year is required");
+        }
         if ( !StringUtils.hasText( studentDto.getParentName() ) ) {
         	throw new ResponseStatusException(
         			HttpStatus.BAD_REQUEST, "Parent name is required");
@@ -80,6 +85,7 @@ public class StudentController {
         Student student = new Student();
         
         student.setName( studentDto.getName() );
+        student.setBirthYear(studentDto.getBirthYear() );
         student.setParentName(studentDto.getParentName() );
         student.setParentEmail(studentDto.getParentEmail() );
         
